@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+// 上边一句指定该文件的工作环境
+require('../src/index')
