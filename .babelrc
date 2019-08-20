@@ -1,0 +1,19 @@
+{
+    "presets": [
+        [ "@babel/preset-env" ]
+    ]
+}
+
+// {
+//     "presets": [
+//         [
+//             "@babel/preset-env",
+//                 这么写可以指定预设的环境的对象(node/浏览器)以及版本，省略时和babel-preset-latest(babel7已废弃)等同
+//             {
+//                 "targets": {
+//                     "ie": 10
+//                 }
+//             }
+//         ]
+//     ]
+// }
