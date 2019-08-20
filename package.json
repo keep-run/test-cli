@@ -21,7 +21,11 @@
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "chalk": "^2.4.2",
-    "optimist": "^0.6.1"
+    "fetch": "^1.1.0",
+    "fs-extra": "^8.1.0",
+    "node-fetch": "^2.6.0",
+    "optimist": "^0.6.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@babel/register": "^7.5.5"

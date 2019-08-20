@@ -8,4 +8,6 @@ let clis = fs.readdirSync(path.resolve(__dirname, './cli/')).map(item => item.re
 let cmd = clis.indexOf(commands[0]) !== -1 ? commands[0] : 'help'
 command = require('./cli/' + cmd).default
 argv.cwd = process.cwd()    //process.cwd():返回当前工作目录
+
+console.log('cwd:',process.cwd())
 command(argv)  
