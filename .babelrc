@@ -1,8 +1,9 @@
-{
-    "presets": [
-        [ "@babel/preset-env" ]
-    ]
-}
+{}
+// {
+//     "presets": [
+//         [ require.resolve("@babel/preset-env") ]
+//     ],
+// }
 
 // {
 //     "presets": [

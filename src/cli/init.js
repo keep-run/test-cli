@@ -1,6 +1,7 @@
 import fetch from 'node-fetch'
 import request from 'request'
 import fs from 'fs-extra'
+import dlTgz from 'dl-tgz'
 import chalk from 'chalk'
 import path from 'path'
 import MineConfig from '../config/mine'
@@ -54,8 +55,11 @@ const getLatestDownload = async (pkgName) => {
 }
 
 // 下载模板
-const downloadPkg=async (url,targetUrl)=>{
-
+const downloadPkg=async (url,distPath)=>{
+    console.log('down template')
+    // return new Promise((resolve,reject)=>{
+    //     dlTgz(url,distPath).subscribe(()=>{})
+    // })
 }
 
 export default async (props) => {

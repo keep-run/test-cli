@@ -1,5 +1,14 @@
 #!/usr/bin/env node
 // 上边一句指定该文件的工作环境
 require('@babel/polyfill')
-require('@babel/register')
+require('@babel/register')({
+    // plugins: ["@babel/plugin-syntax-dynamic-import"],
+    presets: [require.resolve("@babel/preset-env")],
+    ignore: [],
+    extensions: [".es6", ".es", ".jsx", ".js", ".mjs"],
+    cache: true,
+})
+
+console.log('test-cli bin/index',require.resolve("@babel/preset-env"))
+
 require('../src/index')
