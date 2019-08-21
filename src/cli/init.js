@@ -55,15 +55,33 @@ const getLatestDownload = async (pkgName) => {
 }
 
 // 下载模板
-const downloadPkg=async (url,distPath)=>{
-    console.log('down template')
-    // return new Promise((resolve,reject)=>{
-    //     dlTgz(url,distPath).subscribe(()=>{})
-    // })
+const downloadPkg = async (url, distPath) => {
+    console.log('------------- down template ---------------------')
+    return new Promise((resolve, reject) => {
+        dlTgz(url, distPath).subscribe({
+            next({ entry }) {
+                if (entry.bytes !== entry.header.size) {
+                    return;
+                }
+                console.log(`✓ ${entry.header.name}`);
+            },
+            complete() {
+                resolve()
+                console.log('\nCompleted download')
+            }
+        })
+    })
 }
 
+// 重置模板中的package.json
+const resetPkgInfo=async(pkg,newItem)=>{
+  const json=await fs.readJSON(pkg);
+  Object.assign(json,newItem)
+  await fs.outputJSON(pkg,json)
+}
 export default async (props) => {
     const project = props._[1]
+    const distPath = props.cwd;
     const template = projectMap[project]
     if (!template) {
         console.log(chalk.red(`${project} is not found`))
@@ -71,15 +89,14 @@ export default async (props) => {
     }
     console.log('start resolve ......')
     const downUrl = await getLatestDownload(template)
-    console.log('downUrl', downUrl)
     if (downUrl) {
-        const distDirTemp = path.join(tempDir, project)
-        await fs.remove(distDirTemp);
-        console.log(chalk.green(`loading from ${downUrl}`))
-        
-        const distDir=await downloadPkg(downUrl,distDirTemp)
-
-        console.log('------------', distDirTemp)
+        await fs.remove(distPath)
+        await downloadPkg(downUrl, distPath)
     }
-    require('../config/mine')
+    
+    await resetPkgInfo(path.join(distPath,'package.json'),{
+        name:path.basename(distPath)
+    })
+
+    console.log(chalk.green('download success'))
 }

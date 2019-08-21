@@ -9,6 +9,4 @@ require('@babel/register')({
     cache: true,
 })
 
-console.log('test-cli bin/index',require.resolve("@babel/preset-env"))
-
 require('../src/index')
