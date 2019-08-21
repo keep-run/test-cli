@@ -8,7 +8,6 @@ import MineConfig from '../config/mine'
 
 
 const RegistryServer = MineConfig.registryServer;
-const tempDir = MineConfig.tempdir;
 
 export const helper = 'test-cli init [projectName]'
 
@@ -90,7 +89,7 @@ export default async (props) => {
     console.log('start resolve ......')
     const downUrl = await getLatestDownload(template)
     if (downUrl) {
-        await fs.remove(distPath)
+        await fs.emptyDir(distPath)    //先清空目录，删除目录下的所有文件，如果是remove,会删除当前文件夹
         await downloadPkg(downUrl, distPath)
     }
     

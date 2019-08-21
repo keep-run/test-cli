@@ -13,7 +13,3 @@ export default{
     tempdir:path.join(os.homedir(),'.test-cli','temp'),
     registryServer:'http://registry.npmjs.lianjia.com:7001'
 }
-console.log('__dirname',__dirname,)
-console.log('toolRoot',toolRoot,)
-console.log('os',os.homedir,)
-console.log('test',path.join(os.homedir(),'.test-cli','temp'))
