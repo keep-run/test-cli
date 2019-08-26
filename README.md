@@ -11,3 +11,5 @@
 - babel7废弃了年份preset. 比如 `preset-es2017, babel-preset-latest,babel-preset-stage-0`等不能使用。那么怎么解决具体的preset问题以及相关优化？ [请参考](https://blog.hhking.cn/2019/04/02/babel-v7-update/)
 
 - 配置`preset-env`时，如果在.babelrc中配置，在当前目录下执行相关指令没问题，但是切换在其他文件夹(假设名称为A)就找不到相关模块，会在A文件下找`preset-env`。这个不合理，但不知道怎么配置。 解决办法在`@babel/register`处引入该插件，并用`require.resolve()`来实现。该语句会得到一个绝对路径。
+
+- `webpack-dev-server`:是一个微型服务器，会将entry中的入口文件打包放在output指定的地方，output的文件地址相对于配置中的contentBase.但是这个包并没有放在真实目录下，而是放在内存中。所以在当前目录下起了服务，默认会有一个index.html(也可能是ejs)的模板.在模板中需要正确引入相关资源；
