@@ -8,11 +8,7 @@ import Config from '../config'
 
 export default (args) => {
     const pkgConfig = Config.getPackage(args.cwd)
-    // const webpackConfig = Object.assign({}, pkgConfig['test-cli'], {
-    //     context: path.join(args.cwd, 'src')
-    // })
-    // const port = pkgConfig['test-cli'].port||'8080'
-
+    const port = pkgConfig.testCli.port||8080
     const webpackConfig = {
         context: args.cwd,
         entry: './src/index.js',
@@ -24,7 +20,7 @@ export default (args) => {
 
     const devServer={
         contentBase:args.cwd,
-        port:8080,
+        port,
         host:'0.0.0.0',  
     }
 
@@ -37,10 +33,10 @@ export default (args) => {
     const server = new WebpackDevServer(compiler, Object.assign(devServer,{ open: true, }))
 
 
-    server.listen(8080, '127.0.0.1', () => {
-        console.log(`console.log('Starting server on http://localhost:${8080}')`)
+    server.listen(port, '127.0.0.1', () => {
+        console.log(`console.log('Starting server on http://localhost:${port}')`)
     })
 
 
-    console.log('pkgConfig', webpackConfig)
+    // console.log('pkgConfig', webpackConfig)
 }
