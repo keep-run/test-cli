@@ -53,7 +53,4 @@ export default (args) => {
     server.listen(port, '127.0.0.1', () => {
         console.log(`console.log('Starting server on http://localhost:${port}')`)
     })
-
-
-    // console.log('pkgConfig', webpackConfig)
 }
