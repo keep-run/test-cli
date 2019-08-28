@@ -11,11 +11,28 @@ export default (args) => {
     const port = pkgConfig.testCli.port||8080
     const webpackConfig = {
         context: args.cwd,
-        entry: './src/index.js',
+        entry: './src/index.jsx',
         mode:'development',
         output:{
             filename:"bundle.js"
-        }
+        },
+        resolve:{
+            extensions:['.js','.jsx']
+        },
+        module: {
+            rules: [
+              {
+                test: /\.jsx/,
+                exclude: /(node_modules)/,  //对这个不做处理
+                use: {
+                  loader: require.resolve('babel-loader'),
+                  options: {
+                    presets: [require.resolve('@babel/preset-env'),require.resolve('@babel/preset-react')]    //在react环境下,也可以进行打包
+                  }
+                }
+              }
+            ]
+          }
     }
 
     const devServer={

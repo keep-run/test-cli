@@ -5,6 +5,9 @@
 - `babel-register`:这个插件会改写`require`指令，引入之后，再使用require(filePath)时，会对引入的文件先转码，而不用手动转码了。
 - `optimist`: 处理node指令中携带的参数。会已对象的形式获取。
 - `fetch`:node 环境不能使用浏览器环境中的fetch。需要使用`node-fetch`
+- `@babel/preset-env`:将ES6代码转化成ES5;
+- `@babel/preset-react`:将jsx文件编译成js(浏览器并不能识别jsx文件)
+- `babel-loader`:webpack加载器，接受es代码，配合`@babel/preset-env`、`@babel/preset-react`把代码转换成浏览器可以理解的语言。[参考资料](https://www.html.cn/archives/9427)
 
 # 遇到的若干问题
 
