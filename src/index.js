@@ -11,5 +11,7 @@ command = require('./cli/' + cmd).default
 
 argv.cwd = process.cwd()    //process.cwd():返回当前工作目录
 
-console.log('cwd',process.cwd() )
+console.log('process.cwd', process.cwd())
+console.log('__dirname 　', __dirname)
+console.log('__filename', __filename)
 command(argv)  
