@@ -17,5 +17,7 @@
 
 - `webpack-dev-server`:是一个微型服务器，会将entry中的入口文件打包放在output指定的地方，output的文件地址相对于配置中的contentBase.但是这个包并没有放在真实目录下，而是放在内存中。所以在当前目录下起了服务，默认会有一个index.html(也可能是ejs)的模板.在模板中需要正确引入相关资源；
 
+- extract-text-webpack-plugin 这个插件用于打包输出css文件，但是在webpack4+中，这个插件会报错，替换为mini-css-extract-plugin即可；
+
 # package.json解读
 - bin: 可以是一个map结构，也可以是一个字符串。全局安装时，会为bin中的路径创建一个软链接。局部安装时，会在项目内./node_modules/.bin/目录下创建软连接。
