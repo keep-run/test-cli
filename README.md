@@ -19,5 +19,7 @@
 
 - extract-text-webpack-plugin 这个插件用于打包输出css文件，但是在webpack4+中，这个插件会报错，替换为mini-css-extract-plugin即可；
 
+- 配置antd时，首先配置less-loader，这里不能设置`exclude: /node_modules/`,因为antd在node_modules，上边排除了这个文件，使得antd中的less文件无法编译。
+
 # package.json解读
 - bin: 可以是一个map结构，也可以是一个字符串。全局安装时，会为bin中的路径创建一个软链接。局部安装时，会在项目内./node_modules/.bin/目录下创建软连接。
