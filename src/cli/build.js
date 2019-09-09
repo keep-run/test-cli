@@ -1,5 +1,6 @@
 import Webpack from 'webpack'
 import path from 'path'
+import utils from '../utils/index'
 
 /*clean-webpack-plugin源码写的是 export { CleanWebpackPlugin } ,所以可以这两种方式引入
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -19,9 +20,11 @@ export default (args) => {
     console.error(err)
     process.exit(1)
   }
+
+  const { entry = './src/index.jsx' } = utils.getPackage(args.cwd).iron || {}
   const webpackConfig = {
     context: args.cwd,
-    entry: './src/index.jsx',
+    entry: entry,
     mode: 'production',
     output: {
       filename: "bundle.js",

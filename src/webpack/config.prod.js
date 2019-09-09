@@ -1,5 +1,6 @@
 import commonConfig from './commonConfig'
 
-export default (config) => {
-    return commonConfig({ mode: 'production' })
+export default (args) => {
+    args.mode="production"
+    return commonConfig(args)
 }
